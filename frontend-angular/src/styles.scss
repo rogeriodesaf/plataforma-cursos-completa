@@ -1,0 +1,224 @@
+:root {
+  --bg: #f6efe5;
+  --bg-strong: #ead7bc;
+  --surface: rgba(255, 252, 246, 0.92);
+  --surface-strong: #fff9ef;
+  --ink: #221710;
+  --muted: #6e635b;
+  --primary: #3b2418;
+  --primary-soft: #f0ddba;
+  --primary-soft-2: #f4e8cf;
+  --accent: #9d6c22;
+  --line: rgba(59, 36, 24, 0.12);
+  --success: #496b4a;
+  --danger: #a31f30;
+  --shadow: 0 24px 60px rgba(59, 36, 24, 0.12);
+  --shadow-soft: 0 18px 38px rgba(79, 53, 25, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Manrope', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(244, 222, 177, 0.58), transparent 30%),
+    radial-gradient(circle at right, rgba(226, 196, 145, 0.32), transparent 20%),
+    linear-gradient(180deg, #fbf6ef 0%, #efe4d4 100%);
+}
+
+body {
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+button, input, textarea, mat-select {
+  font: inherit;
+}
+
+.page-shell {
+  padding: 24px;
+}
+
+.panel {
+  background: var(--surface);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.surface-card {
+  background: rgba(255, 252, 247, 0.95);
+  border: 1px solid rgba(116, 82, 37, 0.12);
+  box-shadow: var(--shadow-soft);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stat-grid,
+.card-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.stat-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(16, 40, 31, 0.08);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.mat-mdc-button-base {
+  --mat-text-button-state-layer-color: rgba(59, 36, 24, 0.08);
+  --mat-outlined-button-state-layer-color: rgba(59, 36, 24, 0.08);
+  --mat-filled-button-state-layer-color: rgba(255, 255, 255, 0.18);
+  border-radius: 18px !important;
+}
+
+.mat-mdc-unelevated-button,
+.mat-mdc-outlined-button,
+.mat-mdc-button {
+  border-radius: 18px !important;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(216, 204, 184, 0.42), rgba(248, 243, 233, 0.86), rgba(216, 204, 184, 0.42));
+  background-size: 200% 100%;
+  animation: shimmer 1.35s linear infinite;
+  border-radius: 16px;
+}
+
+.skeleton-line {
+  height: 14px;
+}
+
+.skeleton-title {
+  height: 28px;
+  width: min(280px, 72%);
+}
+
+.skeleton-block {
+  min-height: 140px;
+}
+
+.skeleton-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-mdc-snack-bar-container.success .mdc-snackbar__surface {
+  background: #1f6d40 !important;
+  color: #fff !important;
+}
+
+.mat-mdc-snack-bar-container.error .mdc-snackbar__surface {
+  background: #8e1b2a !important;
+  color: #fff !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-form-field-infix {
+  min-height: 56px;
+  padding-top: 16px !important;
+  padding-bottom: 14px !important;
+}
+
+.mat-mdc-input-element,
+.mat-mdc-select-value-text,
+.mat-mdc-select-min-line,
+textarea.mat-mdc-input-element {
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+textarea.mat-mdc-input-element {
+  margin-top: 4px;
+}
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 18px;
+}
+
+.mat-mdc-select-panel {
+  border-radius: 18px !important;
+  padding: 8px !important;
+  background: rgba(255, 250, 241, 0.98) !important;
+  box-shadow: 0 18px 38px rgba(79, 53, 25, 0.16) !important;
+}
+
+.mat-mdc-option {
+  min-height: 46px !important;
+  border-radius: 12px;
+  margin-bottom: 4px;
+}
+
+.mat-mdc-option .mdc-list-item__primary-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.96rem;
+}
+
+@media (max-width: 768px) {
+  .page-shell {
+    padding: 16px;
+  }
+}
