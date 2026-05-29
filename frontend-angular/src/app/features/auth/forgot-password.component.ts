@@ -45,7 +45,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
 
         <div class="result panel" *ngIf="response() as currentResponse">
           <strong>{{ currentResponse.mensagem }}</strong>
-          <p class="muted">Enquanto o envio por email nao estiver ativo, voce pode usar o link abaixo.</p>
+          <p class="muted">Abra o link abaixo para informar sua nova senha com seguranca.</p>
           <a *ngIf="currentResponse.linkRedefinicao" [href]="buildFrontendResetUrl(currentResponse.token!)" target="_blank" rel="noopener">
             Abrir redefinicao de senha
           </a>
@@ -59,9 +59,9 @@ import { extractApiError } from '../../core/utils/api-error.util';
 
       <div class="accent panel">
         <span class="eyebrow">Seguranca</span>
-        <h2>Tokens temporarios para recuperar o acesso com mais tranquilidade.</h2>
+        <h2>Tokens temporarios para redefinir a senha com simplicidade e seguranca.</h2>
         <p class="muted">
-          O link de redefinicao expira automaticamente e ajuda a proteger a conta do aluno durante o processo.
+          O link expira automaticamente e permite atualizar a senha sem depender de integracao externa de email.
         </p>
       </div>
     </section>
