@@ -24,7 +24,7 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       <section class="form-panel surface-card reveal reveal-1">
         <span class="eyebrow">Aulas</span>
         <h1>{{ editingLessonId() ? 'Editar aula' : 'Cadastro de aulas' }}</h1>
-        <p class="muted">A ordem e definida automaticamente pelo backend. Cole um link do YouTube e a plataforma converte para o formato ideal.</p>
+        <p class="muted">Monte a trilha do curso com videos bem organizados e uma experiencia de estudo fluida para o aluno.</p>
 
         <form [formGroup]="form" (ngSubmit)="submit()" class="form">
           <mat-form-field appearance="outline">
@@ -108,19 +108,28 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
 
         <div class="lesson-list" *ngIf="!loading(); else loadingState">
           <mat-card class="lesson-card surface-card" *ngFor="let lesson of filteredLessons()">
-            <div class="heading">
-              <div>
-                <h3>{{ lesson.ordem }}. {{ lesson.titulo }}</h3>
-                <p class="muted">{{ lesson.nomeProfessor }} - {{ lesson.nomeCurso }}</p>
+            <div class="lesson-main">
+              <div class="lesson-index">{{ lesson.ordem }}</div>
+
+              <div class="lesson-copy">
+                <div class="heading">
+                  <div>
+                    <h3>{{ lesson.titulo }}</h3>
+                    <p class="muted">{{ lesson.nomeProfessor }} - {{ lesson.nomeCurso }}</p>
+                  </div>
+                  <span class="pill">{{ lesson.ativa ? 'Ativa' : 'Inativa' }}</span>
+                </div>
+
+                <p class="muted">{{ lesson.descricao }}</p>
+
+                <div class="meta-strip">
+                  <span class="meta-tag">{{ lesson.duracaoMinutos }} min</span>
+                  <span class="meta-tag">Video pronto para a trilha</span>
+                </div>
               </div>
-              <span class="pill">{{ lesson.ativa ? 'Ativa' : 'Inativa' }}</span>
             </div>
 
-            <p class="muted">{{ lesson.descricao }}</p>
-
             <div class="actions">
-              <span class="pill">{{ lesson.duracaoMinutos }} min</span>
-
               <div class="button-group">
                 <button mat-stroked-button type="button" (click)="editLesson(lesson)">Editar</button>
 
@@ -164,7 +173,7 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
     .lesson-card,
     .skeleton-card {
       padding: 24px;
-      border-radius: 28px;
+      border-radius: 24px;
     }
 
     .form,
@@ -200,6 +209,31 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       margin-bottom: 8px;
     }
 
+    .lesson-main {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .lesson-index {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(235, 214, 176, 0.9), rgba(224, 193, 138, 0.9));
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 12px 24px rgba(95, 68, 31, 0.12);
+    }
+
+    .lesson-copy {
+      display: grid;
+      gap: 12px;
+    }
+
     .video-preview {
       display: grid;
       gap: 10px;
@@ -224,6 +258,23 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+    }
+
+    .meta-strip {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(157, 108, 34, 0.09);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 700;
     }
 
     .primary {
@@ -279,6 +330,10 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
     @media (max-width: 768px) {
       .admin-shell {
         padding: 16px;
+      }
+
+      .lesson-main {
+        grid-template-columns: 1fr;
       }
 
       .button-group button,

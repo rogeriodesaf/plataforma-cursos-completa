@@ -60,7 +60,13 @@ interface NavItem {
       </aside>
 
       <main class="content">
-        <router-outlet />
+        <div class="content-body">
+          <router-outlet />
+        </div>
+
+        <footer class="app-footer">
+          desenvolvido por Rogerio de Sa - Analista de Sistemas @2026
+        </footer>
       </main>
     </div>
   `,
@@ -176,6 +182,20 @@ interface NavItem {
 
     .content {
       min-width: 0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 16px;
+    }
+
+    .content-body {
+      min-width: 0;
+    }
+
+    .app-footer {
+      padding: 0 10px 8px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
     }
 
     @media (max-width: 1240px) {

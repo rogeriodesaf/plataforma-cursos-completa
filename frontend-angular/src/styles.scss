@@ -54,7 +54,7 @@ button, input, textarea, mat-select {
   background: var(--surface);
   backdrop-filter: blur(14px);
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 22px;
   box-shadow: var(--shadow);
 }
 
@@ -109,13 +109,13 @@ button, input, textarea, mat-select {
   --mat-text-button-state-layer-color: rgba(59, 36, 24, 0.08);
   --mat-outlined-button-state-layer-color: rgba(59, 36, 24, 0.08);
   --mat-filled-button-state-layer-color: rgba(255, 255, 255, 0.18);
-  border-radius: 16px !important;
+  border-radius: 14px !important;
 }
 
 .mat-mdc-unelevated-button,
 .mat-mdc-outlined-button,
 .mat-mdc-button {
-  border-radius: 16px !important;
+  border-radius: 14px !important;
 }
 
 .skeleton {
@@ -201,6 +201,11 @@ textarea.mat-mdc-input-element {
   --mdc-outlined-text-field-hover-outline-color: rgba(59, 36, 24, 0.22);
   --mdc-outlined-text-field-focus-outline-color: rgba(157, 108, 34, 0.55);
   background: rgba(255, 251, 245, 0.92);
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 16px !important;
+  overflow: hidden;
 }
 
 .mat-mdc-form-field-subscript-wrapper {

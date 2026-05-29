@@ -46,6 +46,8 @@ import { extractApiError } from '../../core/utils/api-error.util';
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" type="email">
             <mat-icon matSuffix>alternate_email</mat-icon>
+            <mat-error *ngIf="form.controls.email.hasError('required')">Informe seu email.</mat-error>
+            <mat-error *ngIf="form.controls.email.hasError('email')">Digite um email valido.</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -54,6 +56,9 @@ import { extractApiError } from '../../core/utils/api-error.util';
             <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
               <mat-icon>{{ hidePassword() ? 'visibility' : 'visibility_off' }}</mat-icon>
             </button>
+            <mat-hint>Use a mesma senha cadastrada, com 6 a 8 caracteres.</mat-hint>
+            <mat-error *ngIf="form.controls.senha.hasError('required')">Informe sua senha.</mat-error>
+            <mat-error *ngIf="form.controls.senha.hasError('minlength')">A senha precisa ter no minimo 6 caracteres.</mat-error>
           </mat-form-field>
 
           <button mat-flat-button class="primary full-width" [disabled]="form.invalid || loading()" type="submit">
@@ -66,6 +71,10 @@ import { extractApiError } from '../../core/utils/api-error.util';
           <a routerLink="/registro">Criar conta</a>
         </p>
       </mat-card>
+
+      <footer class="auth-footer">
+        desenvolvido por Rogerio de Sa - Analista de Sistemas @2026
+      </footer>
     </section>
   `,
   styles: [`
@@ -73,6 +82,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: 1fr auto;
       gap: 24px;
       padding: 24px;
       align-items: stretch;
@@ -152,6 +162,14 @@ import { extractApiError } from '../../core/utils/api-error.util';
       color: var(--accent);
       font-weight: 700;
       text-decoration: none;
+    }
+
+    .auth-footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding-bottom: 6px;
     }
 
     @media (max-width: 920px) {
