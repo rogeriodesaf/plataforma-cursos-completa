@@ -29,7 +29,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
       <mat-card class="panel auth-card">
         <span class="eyebrow">Registro</span>
         <h1>Criar conta de aluno</h1>
-        <p class="muted">Seu backend cria novos usuarios com perfil USER por padrao.</p>
+        <p class="muted">Cadastre-se para acompanhar seus cursos, progresso e certificados em um unico ambiente.</p>
 
         <form [formGroup]="form" (ngSubmit)="submit()" class="form">
           <mat-form-field appearance="outline">
@@ -59,10 +59,10 @@ import { extractApiError } from '../../core/utils/api-error.util';
       </mat-card>
 
       <div class="accent panel">
-        <span class="eyebrow">Fluxo</span>
-        <h2>Matricula, progresso e certificado no mesmo ambiente.</h2>
+        <span class="eyebrow">Jornada</span>
+        <h2>Uma experiencia de estudo clara, acolhedora e organizada.</h2>
         <p class="muted">
-          Depois do registro, o acesso ao dashboard e liberado via login com JWT e guards por perfil.
+          Entre na plataforma, acompanhe cada aula no seu ritmo e avance com seguranca ate a conclusao do curso.
         </p>
       </div>
     </section>
