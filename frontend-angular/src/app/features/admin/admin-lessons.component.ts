@@ -129,7 +129,9 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
               </div>
             </div>
 
-            <div class="actions">
+            <div class="card-divider"></div>
+
+            <div class="actions footer-actions">
               <div class="button-group">
                 <button mat-stroked-button type="button" (click)="editLesson(lesson)">Editar</button>
 
@@ -180,6 +182,15 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
     .lesson-list {
       display: grid;
       gap: 16px;
+    }
+
+    .lesson-card {
+      gap: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(246, 212, 141, 0.16), transparent 28%),
+        linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(248, 242, 230, 0.98));
+      border: 1px solid rgba(157, 108, 34, 0.1);
+      box-shadow: 0 20px 38px rgba(79, 53, 25, 0.08);
     }
 
     .toolbar {
@@ -234,6 +245,15 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       gap: 12px;
     }
 
+    .lesson-copy h3 {
+      margin: 0;
+    }
+
+    .lesson-copy > .muted {
+      margin: 0;
+      line-height: 1.6;
+    }
+
     .video-preview {
       display: grid;
       gap: 10px;
@@ -264,6 +284,7 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .meta-tag {
@@ -275,6 +296,16 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       color: var(--primary);
       font-size: 0.82rem;
       font-weight: 700;
+    }
+
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(157, 108, 34, 0.18), transparent);
+    }
+
+    .footer-actions {
+      justify-content: flex-end;
+      padding-top: 2px;
     }
 
     .primary {
@@ -334,6 +365,10 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
 
       .lesson-main {
         grid-template-columns: 1fr;
+      }
+
+      .footer-actions {
+        justify-content: stretch;
       }
 
       .button-group button,
