@@ -124,7 +124,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
                   </button>
 
                   <button mat-stroked-button class="action-secondary" type="button" (click)="printCertificate(currentCertificate)">
-                    Imprimir
+                    Abrir para imprimir / PDF
                   </button>
 
                   <a
@@ -629,21 +629,19 @@ export class CoursePlayerComponent implements OnInit {
 
   printCertificate(certificate: Certificado): void {
     const html = this.buildCertificateHtml(certificate, true);
-    const printWindow = window.open('', '_blank', 'width=1100,height=800');
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const printWindow = window.open(url, '_blank', 'noopener,noreferrer');
 
     if (!printWindow) {
+      URL.revokeObjectURL(url);
       this.notificationService.error('Nao foi possivel abrir a janela de impressao.');
       return;
     }
 
-    printWindow.document.open();
-    printWindow.document.write(html);
-    printWindow.document.close();
-    printWindow.focus();
-
     setTimeout(() => {
-      printWindow.print();
-    }, 350);
+      URL.revokeObjectURL(url);
+    }, 10000);
   }
 
   private load(courseId: number): void {
