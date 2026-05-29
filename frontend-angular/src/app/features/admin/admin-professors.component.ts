@@ -84,7 +84,9 @@ import { extractApiError } from '../../core/utils/api-error.util';
               </div>
             </div>
 
-            <div class="actions">
+            <div class="card-divider"></div>
+
+            <div class="actions footer-actions">
               <button mat-stroked-button type="button" (click)="editProfessor(professor)">Editar</button>
 
               <button
@@ -126,7 +128,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
     .professor-card,
     .skeleton-card {
       padding: 24px;
-      border-radius: 28px;
+      border-radius: 24px;
     }
 
     .form,
@@ -134,6 +136,14 @@ import { extractApiError } from '../../core/utils/api-error.util';
     .professor-card {
       display: grid;
       gap: 16px;
+    }
+
+    .professor-card {
+      background:
+        radial-gradient(circle at top right, rgba(246, 212, 141, 0.16), transparent 28%),
+        linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(248, 242, 230, 0.98));
+      border: 1px solid rgba(157, 108, 34, 0.1);
+      box-shadow: 0 20px 38px rgba(79, 53, 25, 0.08);
     }
 
     .search-field {
@@ -180,6 +190,16 @@ import { extractApiError } from '../../core/utils/api-error.util';
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
+    }
+
+    .card-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(157, 108, 34, 0.18), transparent);
+    }
+
+    .footer-actions {
+      justify-content: flex-end;
+      padding-top: 2px;
     }
 
     .avatar-chip {
@@ -250,6 +270,10 @@ import { extractApiError } from '../../core/utils/api-error.util';
 
       .professor-main {
         grid-template-columns: 1fr;
+      }
+
+      .footer-actions {
+        justify-content: stretch;
       }
     }
   `]
