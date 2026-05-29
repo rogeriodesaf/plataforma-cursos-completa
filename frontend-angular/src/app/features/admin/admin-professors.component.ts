@@ -61,17 +61,28 @@ import { extractApiError } from '../../core/utils/api-error.util';
           <input matInput [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)">
         </mat-form-field>
 
-        <div class="card-grid" *ngIf="!loading(); else loadingState">
+        <div class="professor-list" *ngIf="!loading(); else loadingState">
           <mat-card class="professor-card surface-card" *ngFor="let professor of filteredProfessors()">
-            <div class="card-header">
-              <div>
-                <h3>{{ professor.nome }}</h3>
-                <p class="muted">{{ professor.email }}</p>
+            <div class="professor-main">
+              <div class="avatar-chip">
+                {{ professor.nome.charAt(0) }}
               </div>
-              <span class="pill">{{ professor.ativo ? 'Ativo' : 'Inativo' }}</span>
-            </div>
 
-            <span class="pill">{{ professor.especialidade || 'Sem especialidade informada' }}</span>
+              <div class="professor-copy">
+                <div class="card-header">
+                  <div>
+                    <h3>{{ professor.nome }}</h3>
+                    <p class="muted">{{ professor.email }}</p>
+                  </div>
+                  <span class="pill">{{ professor.ativo ? 'Ativo' : 'Inativo' }}</span>
+                </div>
+
+                <div class="meta-row">
+                  <span class="meta-label">Especialidade</span>
+                  <strong>{{ professor.especialidade || 'Sem especialidade informada' }}</strong>
+                </div>
+              </div>
+            </div>
 
             <div class="actions">
               <button mat-stroked-button type="button" (click)="editProfessor(professor)">Editar</button>
@@ -119,6 +130,7 @@ import { extractApiError } from '../../core/utils/api-error.util';
     }
 
     .form,
+    .professor-list,
     .professor-card {
       display: grid;
       gap: 16px;
@@ -132,6 +144,18 @@ import { extractApiError } from '../../core/utils/api-error.util';
       margin-bottom: 8px;
     }
 
+    .professor-main {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .professor-copy {
+      display: grid;
+      gap: 14px;
+    }
+
     .card-header,
     .actions,
     .form-actions {
@@ -140,6 +164,35 @@ import { extractApiError } from '../../core/utils/api-error.util';
       gap: 12px;
       align-items: center;
       flex-wrap: wrap;
+    }
+
+    .meta-row {
+      display: grid;
+      gap: 4px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 249, 235, 0.98), rgba(247, 241, 225, 0.98));
+      border: 1px solid rgba(157, 108, 34, 0.1);
+    }
+
+    .meta-label {
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .avatar-chip {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, rgba(235, 214, 176, 0.9), rgba(224, 193, 138, 0.9));
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+      box-shadow: 0 12px 24px rgba(95, 68, 31, 0.12);
     }
 
     .primary {
@@ -193,6 +246,10 @@ import { extractApiError } from '../../core/utils/api-error.util';
 
       .actions button {
         width: 100%;
+      }
+
+      .professor-main {
+        grid-template-columns: 1fr;
       }
     }
   `]

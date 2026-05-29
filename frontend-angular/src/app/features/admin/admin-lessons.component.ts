@@ -51,11 +51,13 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
             <textarea matInput formControlName="descricao" rows="4"></textarea>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>URL do video</mat-label>
-            <input matInput formControlName="urlVideo" (blur)="normalizeVideoField()">
-            <mat-hint>Aceita link normal do YouTube, link curto ou link embed.</mat-hint>
-          </mat-form-field>
+          <div class="field-stack">
+            <mat-form-field appearance="outline">
+              <mat-label>URL do video</mat-label>
+              <input matInput formControlName="urlVideo" (blur)="normalizeVideoField()">
+            </mat-form-field>
+            <p class="field-helper">Aceita link normal do YouTube, link curto ou link embed.</p>
+          </div>
 
           <div class="video-preview" *ngIf="videoPreviewUrl() as previewUrl">
             <span class="eyebrow">Previa</span>
@@ -176,6 +178,18 @@ import { normalizeVideoUrl } from '../../core/utils/video-url.util';
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin-bottom: 8px;
+    }
+
+    .field-stack {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-helper {
+      margin: -4px 4px 0;
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.45;
     }
 
     .filter-field {
