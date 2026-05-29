@@ -66,6 +66,8 @@ import { extractApiError } from '../../core/utils/api-error.util';
           </button>
         </form>
 
+        <a class="secondary-link" routerLink="/esqueci-minha-senha">Esqueci minha senha</a>
+
         <p class="muted">
           Ainda nao tem acesso?
           <a routerLink="/registro">Criar conta</a>
@@ -162,6 +164,10 @@ import { extractApiError } from '../../core/utils/api-error.util';
       color: var(--accent);
       font-weight: 700;
       text-decoration: none;
+    }
+
+    .secondary-link {
+      justify-self: start;
     }
 
     .auth-footer {

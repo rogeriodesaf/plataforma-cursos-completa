@@ -15,6 +15,21 @@ export interface RegisterRequest {
   senha: string;
 }
 
+export interface ForgotPasswordRequest {
+  email: string;
+}
+
+export interface ForgotPasswordResponse {
+  mensagem: string;
+  token: string | null;
+  linkRedefinicao: string | null;
+}
+
+export interface ResetPasswordRequest {
+  token: string;
+  novaSenha: string;
+}
+
 export interface UserProfile {
   nome?: string;
   email: string;

@@ -3,7 +3,17 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthState, LoginRequest, LoginResponse, Perfil, RegisterRequest, UserProfile } from '../models/auth.models';
+import {
+  AuthState,
+  ForgotPasswordRequest,
+  ForgotPasswordResponse,
+  LoginRequest,
+  LoginResponse,
+  Perfil,
+  RegisterRequest,
+  ResetPasswordRequest,
+  UserProfile
+} from '../models/auth.models';
 
 interface DecodedToken {
   sub?: string;
@@ -41,6 +51,14 @@ export class AuthService {
 
   register(payload: RegisterRequest): Observable<UserProfile> {
     return this.http.post<UserProfile>(`${environment.apiUrl}/auth/register`, payload);
+  }
+
+  forgotPassword(payload: ForgotPasswordRequest): Observable<ForgotPasswordResponse> {
+    return this.http.post<ForgotPasswordResponse>(`${environment.apiUrl}/auth/forgot-password`, payload);
+  }
+
+  resetPassword(payload: ResetPasswordRequest): Observable<{ mensagem: string }> {
+    return this.http.post<{ mensagem: string }>(`${environment.apiUrl}/auth/reset-password`, payload);
   }
 
   registerAdmin(payload: RegisterRequest): Observable<UserProfile> {

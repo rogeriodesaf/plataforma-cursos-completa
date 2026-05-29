@@ -3,6 +3,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { LoginComponent } from './features/auth/login.component';
 import { RegisterComponent } from './features/auth/register.component';
+import { ForgotPasswordComponent } from './features/auth/forgot-password.component';
+import { ResetPasswordComponent } from './features/auth/reset-password.component';
 import { AppShellComponent } from './shared/layout/app-shell.component';
 import { StudentDashboardComponent } from './features/student/student-dashboard.component';
 import { CourseCatalogComponent } from './features/courses/course-catalog.component';
@@ -17,6 +19,8 @@ export const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegisterComponent },
+  { path: 'esqueci-minha-senha', component: ForgotPasswordComponent },
+  { path: 'redefinir-senha/:token', component: ResetPasswordComponent },
   { path: 'certificados/validacao', component: CertificateValidationComponent },
   { path: 'certificados/validacao/:codigo', component: CertificateValidationComponent },
   {
